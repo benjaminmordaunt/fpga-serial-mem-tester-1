@@ -6,6 +6,9 @@ by Timothy Stotts
 ## Changes by Benjamin Mordaunt
 This fork outputs information about the state of the Serial Flash using the Digilent Pmod OLED RGB instead of the 16x2 character LCD.
 
+### Font
+The `lcd_font_map_pkg.vhdl` package contains functions necessary for converting 4-bit vectors to pixel-map fonts. This package only implements those characters needed for this application.
+
 ## Description
 A small FPGA project of different implementations for testing a N25Q Serial Flash.
 The design targets the Digilent Inc. Arty-A7-100T FPGA development board containing a Xilinx Artix-7 FPGA.
