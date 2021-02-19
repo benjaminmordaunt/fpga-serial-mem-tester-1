@@ -3,6 +3,8 @@
 FPGA Serial Mem Tester Version 1
 by Timothy Stotts
 
+## Changes by Benjamin Mordaunt
+This fork outputs information about the state of the Serial Flash using the Digilent Pmod OLED RGB instead of the 16x2 character LCD.
 
 ## Description
 A small FPGA project of different implementations for testing a N25Q Serial Flash.
