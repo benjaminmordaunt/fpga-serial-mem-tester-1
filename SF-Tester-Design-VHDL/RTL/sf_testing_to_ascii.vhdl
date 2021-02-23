@@ -105,6 +105,7 @@ begin
 
 	-- The single character to display if the pattern matches A, B, C, or D.
 	s_txt_ascii_pattern_1char <=
+	
 		x"41" when ((unsigned(i_pattern_start) = parm_pattern_startval_a) and (unsigned(i_pattern_incr) = parm_pattern_incrval_a)) else
 		x"42" when ((unsigned(i_pattern_start) = parm_pattern_startval_b) and (unsigned(i_pattern_incr) = parm_pattern_incrval_b)) else
 		x"43" when ((unsigned(i_pattern_start) = parm_pattern_startval_c) and (unsigned(i_pattern_incr) = parm_pattern_incrval_c)) else

@@ -29,20 +29,51 @@
 
 package lcd_font_map_pkg;
 	typedef logic text_sprite_t_1bit [7:0][7:0];
+	typedef text_sprite_t_1bit   text_sprite_t;
+	typedef text_sprite_t        text_string_t [2:0];
+	typedef [15:0] text_string_t text_string_colrd_t; // Coloured text string (white - 'hFFFFFF)
 	
-	localparam text_sprite_t [2:0] txt_GO = '{
-		'{'h3C, 'h66, 'h03, 'h03, 'h73, 'h66, 'h7C, 'h00},
-		'{'h1C, 'h36, 'h63, 'h63, 'h63, 'h36, 'h1C, 'h00},
-		'{8{'h00}}
+	// 8*8 font maps taken from https://github.com/dhepper/font8x8/blob/master/font8x8_basic.h
+	localparam text_string_t txt_GO = '{
+		'{'h3C, 'h66, 'h03, 'h03, 'h73, 'h66, 'h7C, 'h00}, // G
+		'{'h1C, 'h36, 'h63, 'h63, 'h63, 'h36, 'h1C, 'h00}, // O
+		'{8{'h00}}                                         // (space)
+	};
+	
+	localparam text_string_t txt_ERS = '{
+		'{'h7F, 'h46, 'h16, 'h1E, 'h16, 'h46, 'h7F, 'h00}, // E
+		'{'h3F, 'h66, 'h66, 'h3E, 'h36, 'h66, 'h67, 'h00}, // R
+		'{'h1E, 'h33, 'h07, 'h0E, 'h38, 'h33, 'h1E, 'h00}  // S
 	};
 
-	// 8*8 font maps taken from https://github.com/dhepper/font8x8/blob/master/font8x8_basic.h
-	function text_sprite_t map_char;
-		input h_digit[3:0];
-		begin
-			case (h_digit)
-				
-			endcase
-		end
+	parameter DIM_8CHAR_ROW   = 1;
+	parameter DIM_8CHAR_COL   = 2;
+	parameter DIM_8CHAR_CHARS = 3;
+
+	function text_string_t populate_string_from_ascii;
+		logic text_sprite_t_1bit colored_char;
+		input logic [7:0][3:0] h_ascii;
+		ref text_string_colrd_t o_string;
+		
+		case (h_ascii)
+			'h474F20: begin // "GO "
+				for(int i = 0; i < $size(o_string, DIM_8CHAR_CHARS); i++) begin
+					for(int j = 0; j < $size(o_string, DIM_8CHAR_COL); j++) begin
+						for(int h = 0; h < $size(o_string, DIM_8CHAR_ROW); h++) begin
+							o_string[i][j][h] = txt_GO[i][j][h] ? 'hFFFFFF : 16'b0; 
+						end
+					end
+				end
+			end
+			'h455253: begin // "ERS"
+				for(int i = 0; i < $size(o_string, DIM_8CHAR_CHARS); i++) begin
+					for(int j = 0; j < $size(o_string, DIM_8CHAR_COL); j++) begin
+						for(int h = 0; h < $size(o_string, DIM_8CHAR_ROW); h++) begin
+							o_string[i][j][h] = txt_ERS[i][j][h] ? 'hFFFFFF : 16'b0; 
+						end
+					end
+				end
+			end
+		endcase
 	endfunction
 endpackage
