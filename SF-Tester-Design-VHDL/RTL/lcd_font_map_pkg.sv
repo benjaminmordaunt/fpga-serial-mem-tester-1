@@ -31,7 +31,7 @@ package lcd_font_map_pkg;
 	typedef logic text_sprite_t_1bit [7:0][7:0];
 	typedef text_sprite_t_1bit   text_sprite_t;
 	typedef text_sprite_t        text_string_t [2:0];
-	typedef [15:0] text_string_t text_string_colrd_t; // Coloured text string (white - 'hFFFFFF)
+	typedef text_string_t [15:0] text_string_colrd_t; // Coloured text string (white - 'hFFFFFF)
 	
 	// 8*8 font maps taken from https://github.com/dhepper/font8x8/blob/master/font8x8_basic.h
 	localparam text_string_t txt_GO = '{
