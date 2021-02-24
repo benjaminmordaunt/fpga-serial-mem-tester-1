@@ -34,13 +34,13 @@ package lcd_font_map_pkg;
 	typedef text_string_t [15:0] text_string_colrd_t; // Coloured text string (white - 'hFFFFFF)
 	
 	// 8*8 font maps taken from https://github.com/dhepper/font8x8/blob/master/font8x8_basic.h
-	localparam text_string_t txt_GO = '{
+	text_string_t txt_GO = '{
 		'{'h3C, 'h66, 'h03, 'h03, 'h73, 'h66, 'h7C, 'h00}, // G
 		'{'h1C, 'h36, 'h63, 'h63, 'h63, 'h36, 'h1C, 'h00}, // O
 		'{8{'h00}}                                         // (space)
 	};
 	
-	localparam text_string_t txt_ERS = '{
+	text_string_t txt_ERS = '{
 		'{'h7F, 'h46, 'h16, 'h1E, 'h16, 'h46, 'h7F, 'h00}, // E
 		'{'h3F, 'h66, 'h66, 'h3E, 'h36, 'h66, 'h67, 'h00}, // R
 		'{'h1E, 'h33, 'h07, 'h0E, 'h38, 'h33, 'h1E, 'h00}  // S
