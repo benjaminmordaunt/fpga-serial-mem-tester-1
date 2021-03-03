@@ -52,7 +52,12 @@ always @(negedge clk) begin
 	if(reset)
 		pixel_data <= 16'b0;
 	else if(frame_begin) begin
-		pixel_data <= txt_GO[character_index][char_c][char_r] ? 16'hFFFFFF : 16'b0;
+		// For the moment, only care about 3 characters
+		if(character_index < 3)
+			pixel_data <= txt_GO[character_index][char_c][char_r] ? 16'hFFFFFF : 16'b0;
+		else
+			pixel_data <= 16'b0;
+		end
 	end
 end
 
